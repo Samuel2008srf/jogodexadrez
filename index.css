@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3730a3 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.chess-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.game-header {
+    text-align: center;
+    color: white;
+}
+
+.game-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.current-player {
+    font-size: 1.125rem;
+    opacity: 0.9;
+}
+
+.current-player span {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.game-status {
+    font-weight: 600;
+    margin-top: 8px;
+    min-height: 24px;
+}
+
+.game-status.check {
+    color: #ef4444;
+}
+
+.game-status.checkmate {
+    color: #ef4444;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.game-status.stalemate {
+    color: #f59e0b;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.chess-board-container {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.file-labels-top,
+.file-labels-bottom {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.file-labels-bottom {
+    margin-bottom: 0;
+    margin-top: 8px;
+}
+
+.rank-label-space {
+    width: 32px;
+}
+
+.file-label {
+    width: 64px;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+.board-with-ranks {
+    display: flex;
+}
+
+.rank-labels-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px 0;
+}
+
+.rank-label {
+    height: 64px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+.chess-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    border: 4px solid #8b5a2b;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.chess-square {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    user-select: none;
+}
+
+.chess-square.light {
+    background-color: #f5deb3;
+}
+
+.chess-square.dark {
+    background-color: #d2691e;
+}
+
+.chess-square.selected {
+    background-color: #fbbf24 !important;
+}
+
+.chess-square.check {
+    background-color: #ef4444 !important;
+}
+
+.chess-square.valid-move::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #10b981;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.chess-square:hover {
+    filter: brightness(1.1);
+}
+
+.chess-piece {
+    font-size: 2.5rem;
+    transition: all 0.2s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.chess-piece.white {
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.chess-piece.black {
+    color: #1f2937;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.chess-piece:hover {
+    transform: scale(1.1);
+}
+
+.game-controls {
+    text-align: center;
+}
+
+.new-game-btn {
+    padding: 12px 24px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
+}
+
+.new-game-btn:hover {
+    background-color: #2563eb;
+}
+
+.new-game-btn:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 768px) {
+    .chess-square {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .file-label,
+    .rank-label {
+        width: 48px;
+    }
+    
+    .rank-label {
+        height: 48px;
+    }
+    
+    .rank-label-space {
+        width: 24px;
+    }
+    
+    .chess-piece {
+        font-size: 2rem;
+    }
+    
+    .game-header h1 {
+        font-size: 1.5rem;
+    }
+}
